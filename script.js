@@ -70,18 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(contactForm);
 
             try {
-                const response = await fetch('https://formsubmit.co/ajax/impulsofitcba@gmail.com', {
+                const response = await fetch(contactForm.action, {
                     method: 'POST',
+                    body: formData,
                     headers: {
-                        'Content-Type': 'application/json',
                         'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        Nombre: formData.get('Nombre'),
-                        Email: formData.get('Email'),
-                        Gimnasio: formData.get('Gimnasio'),
-                        Mensaje: formData.get('Mensaje')
-                    })
+                    }
                 });
 
                 if (response.ok) {
@@ -93,11 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         submitButton.disabled = false;
                     }, 3000);
                 } else {
-                    throw new Error('Error al enviar');
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        throw new Error(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        throw new Error('Error al enviar');
+                    }
                 }
             } catch (error) {
                 console.error('Error:', error);
                 submitButton.textContent = 'Error - Intenta de nuevo';
+
+                // Optional: Alert the user of the specific error
+                // alert(error.message);
 
                 setTimeout(() => {
                     submitButton.textContent = originalText;
