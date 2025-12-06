@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impulso Cba | Agencia de Marketing para Gimnasios</title>
+    <title>ImpulsoCba | Agencia de Marketing para Gimnasios</title>
     <meta name="description"
         content="Agencia de marketing digital especializada en gimnasios y centros deportivos. Aumenta tus socios y visibilidad.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,38 +87,47 @@
     <section id="portfolio" class="portfolio">
         <div class="container">
             <div class="section-header">
-                <h2>Casos de Éxito</h2>
+                <h2>Nuestra Propuesta</h2>
                 <p>Resultados reales para gimnasios reales.</p>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <div class="portfolio-image" style="background-color: #222;">
-                        <!-- Placeholder for portfolio image -->
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>CrossFit Thunder</h4>
-                        <p>+40% Nuevos socios en 3 meses</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background-color: #222;">
-                        <!-- Placeholder for portfolio image -->
-                        <i class="fas fa-running"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Yoga Flow Studio</h4>
-                        <p>Sold out en clases de prueba</p>
+                        <img src="CHAIU DO KWAN.png" alt="CrossFit Thunder" class="portfolio-img"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <video class="portfolio-video"
+                            style="display: none; width: 100%; height: 100%; object-fit: cover;" controls></video>
+                        <i class="fas fa-dumbbell portfolio-icon" style="display: none;"></i>
+                        <input type="file" class="portfolio-upload" accept="image/*,video/*" style="display: none;">
+                        <button class="upload-btn" onclick="this.previousElementSibling.click()" style="display: none;">
+                            <i class="fas fa-upload"></i> Subir Imagen/Video
+                        </button>
                     </div>
                 </div>
                 <div class="portfolio-item">
                     <div class="portfolio-image" style="background-color: #222;">
-                        <!-- Placeholder for portfolio image -->
-                        <i class="fas fa-heartbeat"></i>
+                        <img src="HORARIOS.png" alt="Yoga Flow Studio" class="portfolio-img"
+                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <video class="portfolio-video"
+                            style="display: none; width: 100%; height: 100%; object-fit: cover;" controls></video>
+                        <i class="fas fa-running portfolio-icon" style="display: none;"></i>
+                        <input type="file" class="portfolio-upload" accept="image/*,video/*" style="display: none;">
+                        <button class="upload-btn" onclick="this.previousElementSibling.click()" style="display: none;">
+                            <i class="fas fa-upload"></i> Subir Imagen/Video
+                        </button>
                     </div>
-                    <div class="portfolio-info">
-                        <h4>Iron Gym</h4>
-                        <p>Rebranding completo y web</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image" style="background-color: #222;">
+                        <img src="" alt="Iron Gym" class="portfolio-img"
+                            style="display: none; width: 100%; height: 100%; object-fit: cover;">
+                        <video class="portfolio-video"
+                            style="display: none; width: 100%; height: 100%; object-fit: cover;" controls></video>
+                        <i class="fas fa-heartbeat portfolio-icon"></i>
+                        <input type="file" class="portfolio-upload" accept="image/*,video/*" style="display: none;">
+                        <button class="upload-btn" onclick="this.previousElementSibling.click()">
+                            <i class="fas fa-upload"></i> Subir Imagen/Video
+                        </button>
                     </div>
                 </div>
             </div>
@@ -158,12 +167,16 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Impulso Fit. Todos los derechos reservados.</p>
+            <p>&copy; 2024 ImpulsoCba. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <script src="script.js"></script>
 </body>
-
 
 </html>

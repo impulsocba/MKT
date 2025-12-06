@@ -106,4 +106,60 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Handle portfolio uploads
+    const portfolioUploads = document.querySelectorAll('.portfolio-upload');
+    portfolioUploads.forEach(input => {
+        input.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const portfolioImage = this.parentElement.querySelector('.portfolio-image');
+            const img = portfolioImage.querySelector('.portfolio-img');
+            const video = portfolioImage.querySelector('.portfolio-video');
+            const icon = portfolioImage.querySelector('.portfolio-icon');
+            const uploadBtn = portfolioImage.querySelector('.upload-btn');
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                if (file.type.startsWith('image/')) {
+                    img.src = event.target.result;
+                    img.style.display = 'block';
+                    video.style.display = 'none';
+                } else if (file.type.startsWith('video/')) {
+                    video.src = event.target.result;
+                    video.style.display = 'block';
+                    img.style.display = 'none';
+                }
+                icon.style.display = 'none';
+                uploadBtn.style.display = 'none';
+            };
+
+            reader.readAsDataURL(file);
+        });
+    });
+    // Modal Logic
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    document.querySelectorAll('.portfolio-img').forEach(img => {
+        img.addEventListener('click', function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        });
+    });
+
+    if (closeBtn) {
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        }
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 });
